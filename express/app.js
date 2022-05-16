@@ -3,15 +3,18 @@ const app = express();
 
 const port = 3000;
 
+//motor de plantillas
+app.set('view engine', 'ejs');
+app.set('views', __dirname + '/view');
+
 app.use(express.static(__dirname + '/public'));
 
-
 app.get('/', (req, res) => {
-    res.send('estoy respondiendo a tu peticion con express');
-})
-
+    res.render('index', {titulo: "mi titulo dinamico"});
+});
+ 
 app.get('/servicios', (req, res) => {
-    res.send('estas en la pagina de servicios');
+    res.render('servicios', {tituloservicio: "Página de servicios dinamico"});
 })
 
 app.use((req, res, next) => {
