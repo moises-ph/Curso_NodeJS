@@ -18,7 +18,10 @@ app.get('/servicios', (req, res) => {
 })
 
 app.use((req, res, next) => {
-    res.status(404).sendFile(__dirname + '/public/404.html');
+    res.status(404).render('404', {
+        titulo: 'Pagina 404',
+        descripcion: 'La pagina requerida no se encuentra en el servidor'
+    });
 })
 
 
